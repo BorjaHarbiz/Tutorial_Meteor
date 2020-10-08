@@ -1,6 +1,16 @@
+import { Meteor } from 'meteor/meteor';
+
 Recipes = new Meteor.Collection('recipes');
+
+Recipes.allow({
+    insert(userId,doc) {
+        // The user must be logged in and the document must be owned by the user.
+        return !!userId;
+      },    
+});
+
 RecipeSchema = new SimpleSchema({
-    name: {
+    name: { 
         type : String,
         label: 'Name'
     },
@@ -12,7 +22,7 @@ RecipeSchema = new SimpleSchema({
         type : String,
         label: 'Author',
         autoValue: function () {
-            return thos.userId
+            return this.userId
         },
         autoform:{
             type : "hidden"

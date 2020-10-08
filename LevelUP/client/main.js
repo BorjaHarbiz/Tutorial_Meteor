@@ -15,6 +15,9 @@ import './recipes/NewRecipe.html';
 
 import '../collections/Recipes.js';
 
+import '../collections/Recipes.js';
+
+
 /*
 
 Template.hello.onCreated(function helloOnCreated() {
