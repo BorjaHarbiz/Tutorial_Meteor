@@ -1,0 +1,17 @@
+<template name="NewIngredient">
+    
+    <h1>Ingredientes</h1>
+    <form class="add-ingredienteForm" id="formIngredient">
+        <input id="addIngredient" type="submit" name="add" value="+">
+        <input id="removeIngredient" type="submit" name="remove" value="-">
+    </form>
+
+    {{#each arrayIngredient}}
+    <div class ="arrayClass">
+        {{> Ingredient value=ingredient}}
+    </div>
+    {{/each}}
+    
+
+
+</template>

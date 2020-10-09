@@ -11,30 +11,14 @@ import './layouts/HomeLayout.html';
 import './layouts/MainLayout.html';
 
 import './recipes/Recipes.html';
+import './recipes/Recipes.js';
+
 import './recipes/NewRecipe.html';
+import './recipes/NewRecipe.js';
+
+import './ingredients/NewIngredient.html';
+import './ingredients/NewIngredient.js';
+
+import './ingredients/Ingredient.html';
 
 import '../collections/Recipes.js';
-
-import '../collections/Recipes.js';
-
-
-/*
-
-Template.hello.onCreated(function helloOnCreated() {
-  // counter starts at 0
-  this.counter = new ReactiveVar(0);
-});
-
-Template.hello.helpers({
-  counter() {
-    return Template.instance().counter.get();
-  },
-});
-
-Template.hello.events({
-  'click button'(event, instance) {
-    // increment the counter when button is clicked
-    instance.counter.set(instance.counter.get() + 1);
-  },
-});
-*/

@@ -13,6 +13,7 @@ Template.body.onCreated(function bodyOnCreated() {
     Meteor.subscribe('tasks');
 });
 
+
 Template.body.helpers({
     tasks() {
         const instance = Template.instance();

@@ -1,5 +1,19 @@
 <template name="NewRecipe">
     <div class=".new-recipes-container">
-        {{> quickForm collection="Recipes" id="insertRecipeForm" type="insert" class="new-recipe-form"}}
+        <form class="new-recipes">
+            <br>
+            <label for="name">Añadir a Menú</label>
+            <input type="checkbox" id="chekMenu" name="chekMenu" value="Menu">
+            <br>
+            <hr>
+            <label for="name">Nombre</label>
+            <input type="text" name="name" placeholder="Name" />
+            <label for="description">Descripcion</label>
+            <input type="text" name="desc" placeholder="Description" />
+            {{> NewIngredient}}
+            <br>
+            <input type="submit"  value = "ENVIAR">
+        </form>
     </div>
+    
 </template>
