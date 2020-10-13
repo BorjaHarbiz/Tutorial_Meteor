@@ -13,13 +13,13 @@ Template.body.onCreated(function bodyOnCreated() {
 });
 */
 
-Template.Recipes.onCreated(function() {
+Template.Recipes.onCreated(function () {
     console.log('Recipes onCreated');
     var self = this;
-    self.autorun(function() {
+    self.autorun(function () {
         self.subscribe('recipes')
     });
-    
+
 });
 
 Template.Recipes.helpers({
@@ -29,5 +29,5 @@ Template.Recipes.helpers({
         console.log(Recipes.find({}).count());
         return Recipes.find({}, { sort: { createdAt: -1 } });
     },
-   
+
 });

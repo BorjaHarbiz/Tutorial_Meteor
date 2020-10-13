@@ -24,11 +24,13 @@ Ingredient = new SimpleSchema({
 if (Meteor.isServer) {
   // This code only runs on the server
   // Only publish tasks that are public or belong to the current user
-  console.log("Recipes is serfver");
+  console.log("Recipes is server");
   Meteor.publish('recipes', function recipesPublication() {
     return Recipes.find({});
   });
 }
+
+
 
 Meteor.methods({
   'recipes.insert'(name) {
