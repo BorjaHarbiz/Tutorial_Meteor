@@ -21,6 +21,14 @@ Ingredient = new SimpleSchema({
   }
 });
 
+if (Meteor.isServer) {
+  // This code only runs on the server
+  // Only publish tasks that are public or belong to the current user
+  console.log("Recipes is serfver");
+  Meteor.publish('recipes', function recipesPublication() {
+    return Recipes.find({});
+  });
+}
 
 Meteor.methods({
   'recipes.insert'(name) {
@@ -30,12 +38,8 @@ Meteor.methods({
       throw new Meteor.Error('not-authorized');
     }
     
-    console.log(name);
-    console.log(name.name);
-    console.log(name.desc);
-    debugger;
-    
-   
+    console.log('insert ' + name);
+
     Recipes.insert({
       name : name.name,
       desc : name.desc,
@@ -43,43 +47,8 @@ Meteor.methods({
       createdAt: new Date(),
       author: this.userId,
     });
-  },
-  'recipes.remove'(taskId) {
-    check(taskId, String);
+  }
 
-    const task = Recipes.findOne(taskId);
-    if (task.private && task.owner !== this.userId) {
-      // If the task is private, make sure only the owner can delete it
-      throw new Meteor.Error('not-authorized');
-    }
-
-    Recipes.remove(taskId);
-  },
-  'recipes.setChecked'(taskId, setChecked) {
-    check(taskId, String);
-    check(setChecked, Boolean);
-
-    const task = Recipes.findOne(taskId);
-    if (task.private && task.owner !== this.userId) {
-      // If the task is private, make sure only the owner can check it off
-      throw new Meteor.Error('not-authorized');
-    }
-
-    Recipes.update(taskId, { $set: { checked: setChecked } });
-  },
-  'recipes.setPrivate'(taskId, setToPrivate) {
-    check(taskId, String);
-    check(setToPrivate, Boolean);
-
-    const task = Recipes.findOne(taskId);
-
-    // Make sure only the task owner can make a task private
-    if (task.owner !== this.userId) {
-      throw new Meteor.Error('not-authorized');
-    }
-
-    Recipes.update(taskId, { $set: { private: setToPrivate } });
-  },
 });
 
 

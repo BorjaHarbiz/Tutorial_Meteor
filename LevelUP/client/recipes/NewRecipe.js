@@ -1,4 +1,10 @@
 
+import { Meteor } from 'meteor/meteor';
+import { Template } from 'meteor/templating';
+
+import { Recipes } from '../../collections/Recipes.js';
+
+import './NewRecipe.html';
 
 Template.body.onCreated(function bodyOnCreated() {
     console.log("onCreated");
@@ -9,7 +15,6 @@ Template.body.helpers({
     recipes() {
         const instance = Template.instance();
         // Show newest recipes at the top
-        console.log("helpers Recipe");
         return Recipes.find({}, { sort: { createdAt: -1 } });
     },
    
@@ -28,8 +33,9 @@ Template.NewRecipe.events({
         const target = event.target;
         const name = target.name.value;
         const desc = target.desc.value;
-        const chekMenu = target.chekMenu.value;
-
+        const chekMenu = target.chekMenu.checked;
+        
+        debugger;
 
         var recipes = {name:name,
             desc:desc ,

@@ -9,9 +9,14 @@ import '../lib/routes.js';
 
 import './layouts/HomeLayout.html';
 import './layouts/MainLayout.html';
+import './partials/SideNav.html';
+import './partials/Header.html';
+import './recipes/Recipe.html';
+
 
 import './recipes/Recipes.html';
 import './recipes/Recipes.js';
+
 
 import './recipes/NewRecipe.html';
 import './recipes/NewRecipe.js';
