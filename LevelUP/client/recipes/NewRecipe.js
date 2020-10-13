@@ -15,7 +15,7 @@ Template.body.helpers({
     recipes() {
         const instance = Template.instance();
         // Show newest recipes at the top
-        return Recipes.find({}, { sort: { createdAt: -1 } });
+        return Recipes.findOne({_id: id});
     },
    
 });
