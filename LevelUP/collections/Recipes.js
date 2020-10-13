@@ -38,8 +38,6 @@ Meteor.methods({
     if (!this.userId) {
       throw new Meteor.Error('not-authorized');
     }
-    
-    console.log('insert ' + name);
 
     Recipes.insert({
       name : name.name,
@@ -62,7 +60,16 @@ Meteor.methods({
     }
 
     Recipes.update(recipeId, { $set: { checkMenu: !setCheckedMenu } });
-  }
+  },
+  removeRecipe: function(recipeId) {
+    Recipes.remove(recipeId);
+  },
+  /*
+  findEdit: function(recipeId) {
+    return Recipes.findOne(recipeId);
+  },
+  */
+  
 });
 
 

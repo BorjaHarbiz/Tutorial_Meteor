@@ -9,12 +9,13 @@ import './Ingredient.html';
 
 
 Template.body.onCreated(function bodyOnCreated() {
-    console.log("onCreated INGREDIENT");
-    Session.set('arrayIngredient',[]);
+
+    Session.set('arrayIngredient', []);
     arr = Session.get('arrayIngredient');
-    arr.push({ingredient:"Ingrediente",amount:""});
-    Session.set('arrayIngredient',arr);
+    arr.push({ ingredient: "", amount: "" });
+    Session.set('arrayIngredient', arr);
     Meteor.subscribe('ingredients');
+
 });
 
 Template.NewIngredient.helpers({
@@ -24,6 +25,16 @@ Template.NewIngredient.helpers({
     },
     arrayIngredient() {
         return Session.get('arrayIngredient');
+    },
+    ingredients() {
+        console.log("NewIngredient HELPER " + edit)
+
+        // Show newest recipes at the top
+        recipeFind = Recipes.findOne({ _id: edit });
+
+        arrayIngredient = Session.get('arrayIngredient');
+        Session.set('arrayIngredient', recipeFind.ingredients);
+    
     }
 });
 
@@ -33,14 +44,14 @@ Template.NewIngredient.events({
 
         if ($(e.target).prop("id") == "addIngredient") {
             arrayIngredient = Session.get('arrayIngredient');
-            arrayIngredient.push({ingredient:"",amount:""});
-            Session.set('arrayIngredient',arrayIngredient);
+            arrayIngredient.push({ ingredient: "", amount: "" });
+            Session.set('arrayIngredient', arrayIngredient);
 
         } else if ($(e.target).prop("id") == "removeIngredient") {
             arrayIngredient = Session.get('arrayIngredient');
             arrayIngredient.pop();
-            Session.set('arrayIngredient',arrayIngredient);
-            
+            Session.set('arrayIngredient', arrayIngredient);
+
         }
     }
 

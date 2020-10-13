@@ -9,7 +9,13 @@ import './Recipe.html';
 
 Template.Recipe.events({
     'click .toggle-menu' : function() {
-        console.log(this._id, this.checkMenu)
         Meteor.call('recipe.setCheckedMenu', this._id, this.checkMenu);
-    } 
+    },
+    'click .fa-trash' : function() {
+        Meteor.call('removeRecipe', this._id);
+    },
+    'click .fa-pencil' : function() {
+        Session.set('editMode', !Session.get('editMode'));
+        Meteor.call('findEdit', this._id);
+    }
 });

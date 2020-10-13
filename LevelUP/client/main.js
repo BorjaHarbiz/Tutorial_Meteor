@@ -24,6 +24,9 @@ import './recipes/Recipes.js';
 import './recipes/NewRecipe.html';
 import './recipes/NewRecipe.js';
 
+import './recipes/UpdateRecipe.html';
+import './recipes/UpdateRecipe.js';
+
 import './ingredients/NewIngredient.html';
 import './ingredients/NewIngredient.js';
 

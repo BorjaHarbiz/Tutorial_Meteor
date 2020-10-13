@@ -1,21 +1,32 @@
 <template name="NewRecipe">
-    <div class=".new-recipes-container">
-        <form class="new-recipes">
+
+    {{#if $.Session.get 'editMode'}}
+    <div class=".edit-recipes-container">
+        <form class="edit-recipes">
+            Nombre {{name}}
+            <input type="text" name="name" value={{Name}} />
+          
+            <input type="text" name="desc" />
+            {{> NewIngredient edit=_id}}
             <br>
-            <!--
-            <label for="name">Añadir a Menú</label>
-            <input type="checkbox" id="chekMenu" name="chekMenu" value="Menu"> 
-            <input type="checkbox" id="chekMenu" name="chekMenu" class="myinput large"  /> -->
-            <br>
-            <hr>
-            <label for="name">Nombre</label>
-            <input type="text" name="name" placeholder="{{Name}}" />
-            <label for="description">Descripcion</label>
-            <input type="text" name="desc" placeholder="Description" />
-            {{> NewIngredient}}
-            <br>
-            <input type="submit"  value = "ENVIAR">
+            <input type="submit" value="Editar">
         </form>
     </div>
-    
+    {{else}}
+    <div class=".new-recipes-container">
+        <form class="new-recipes">
+            <hr>
+            <label for="name">Nombre</label>
+            <input type="text" name="name"  value={{Name}} />
+            <label for="description">Descripcion</label>
+            <input type="text" name="desc"  />
+            {{> NewIngredient}}
+            <br>
+            <input type="submit" value="ENVIAR ">
+        </form>
+    </div>
+
+    {{/if}}
+
+
 </template>
