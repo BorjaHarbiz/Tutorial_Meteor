@@ -11,8 +11,11 @@ import './layouts/HomeLayout.html';
 import './layouts/MainLayout.html';
 import './partials/SideNav.html';
 import './partials/Header.html';
+
 import './recipes/Recipe.html';
 
+import './recipes/RecipeSingle.html';
+import './recipes/RecipeSingle.js';
 
 import './recipes/Recipes.html';
 import './recipes/Recipes.js';

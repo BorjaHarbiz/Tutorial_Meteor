@@ -14,7 +14,6 @@ Template.body.onCreated(function bodyOnCreated() {
 */
 
 Template.Recipes.onCreated(function () {
-    console.log('Recipes onCreated');
     var self = this;
     self.autorun(function () {
         self.subscribe('recipes')
@@ -24,9 +23,6 @@ Template.Recipes.onCreated(function () {
 
 Template.Recipes.helpers({
     recipes() {
-        // Show newest recipes at the top
-        console.log("helpers Recipes");
-        console.log(Recipes.find({}).count());
         return Recipes.find({}, { sort: { createdAt: -1 } });
     },
 
