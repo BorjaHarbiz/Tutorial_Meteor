@@ -32,4 +32,7 @@ import './ingredients/Ingredient.html';
 import './menu/Menu.html';
 import './menu/Menu.js';
 
+import './ShoppingList/ShoppingList.html';
+import './ShoppingList/ShoppingList.js';
+
 import '../collections/Recipes.js';
