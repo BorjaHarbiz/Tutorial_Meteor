@@ -33,12 +33,13 @@ Template.NewRecipe.events({
         const target = event.target;
         const name = target.name.value;
         const desc = target.desc.value;
-        const chekMenu = target.chekMenu.checked;
+        const checkMenu = Boolean(target.chekMenu.checked);
         
         debugger;
 
         var recipes = {name:name,
             desc:desc ,
+            checkMenu: checkMenu,
             ingredients:[]}; 
 
         var countArray = document.getElementsByClassName("arrayClass");

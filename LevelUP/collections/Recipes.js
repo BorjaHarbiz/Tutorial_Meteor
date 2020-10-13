@@ -44,12 +44,25 @@ Meteor.methods({
     Recipes.insert({
       name : name.name,
       desc : name.desc,
+      checkMenu : name.checkMenu ,
       ingredients : name.ingredients,
       createdAt: new Date(),
       author: this.userId,
     });
-  }
+  },
+  'recipe.setCheckedMenu'(recipeId, setCheckedMenu) {
+    console.log("recipe.setCheckedMenu " + setCheckedMenu);
+    check(recipeId, String);
+    check(setCheckedMenu, Boolean);
 
+    const recipe = Recipes.findOne(recipeId);
+    if (recipe.author !== this.userId) {
+      // If the task is private, make sure only the owner can check it off
+      throw new Meteor.Error('not-authorized');
+    }
+
+    Recipes.update(recipeId, { $set: { checkMenu: !setCheckedMenu } });
+  }
 });
 
 
