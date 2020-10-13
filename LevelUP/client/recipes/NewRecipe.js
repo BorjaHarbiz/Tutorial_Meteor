@@ -8,8 +8,7 @@ import './NewRecipe.html';
 
 
 Template.NewRecipe.onCreated(function () {
-    var sessionEdit = Session.get('editMode');
-    console.log("sessionEdit " + sessionEdit);
+  
     var self = this;
     self.autorun(function () {
         self.subscribe('recipes')
@@ -20,9 +19,9 @@ Template.NewRecipe.onCreated(function () {
 
 Template.NewRecipe.helpers({
     recipes() {
-        var sessionEdit = Session.get('editMode');
-        Session.get('editMode' +  sessionEdit);
-        console.log("New Recipe HELPER " + edit);
+        var sessionEdit = Template.instance().editMode.get();
+        
+        console.log("New Recipe HELPER " + sessionEdit);
         const instance = Template.instance();
         // Show newest recipes at the top
         return Recipes.findOne({ _id: edit });
@@ -77,8 +76,14 @@ Template.NewRecipe.events({
         target.name.value = '';
         target.desc.value = '';
 
+
     },
     'change .hide-completed input'(event, instance) {
         instance.state.set('hideCompleted', event.target.checked);
     },
+    'click .fa-close':function() {
+        console.log("FA COLSE");
+        Session.set('newRecipe',false);
+    },
+  
 });

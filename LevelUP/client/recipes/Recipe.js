@@ -6,6 +6,17 @@ import { Template } from 'meteor/templating';
 import './Recipe.js';
 import './Recipe.html';
 
+Template.Recipe.onCreated(function () {
+    this.editMode = new ReactiveVar(false);
+    //this.editMode = new ReactiveVar();
+    //this.editMode.set(false);
+});
+
+Template.Recipe.helpers({
+    editMode: function() {
+        return Template.instance().editMode.get();
+    }
+});
 
 Template.Recipe.events({
     'click .toggle-menu' : function() {
@@ -14,8 +25,8 @@ Template.Recipe.events({
     'click .fa-trash' : function() {
         Meteor.call('removeRecipe', this._id);
     },
-    'click .fa-pencil' : function() {
-        Session.set('editMode', !Session.get('editMode'));
-        Meteor.call('findEdit', this._id);
+    'click .fa-pencil' : function(event, template) {
+        //Session.set('editMode', !Session.get('editMode'));
+        template.editMode.set(!template.editMode.get());
     }
 });

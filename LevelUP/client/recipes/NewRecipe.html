@@ -1,11 +1,12 @@
 <template name="NewRecipe">
 
-    {{#if $.Session.get 'editMode'}}
-    <div class=".edit-recipes-container">
-        <form class="edit-recipes">
+
+    {{#if edit}}
+    <div class="edit-recipe-container">
+        <form class="edit-recipe-form">
             Nombre {{name}}
             <input type="text" name="name" value={{Name}} />
-          
+
             <input type="text" name="desc" />
             {{> NewIngredient edit=_id}}
             <br>
@@ -13,19 +14,19 @@
         </form>
     </div>
     {{else}}
-    <div class=".new-recipes-container">
+    <div class="new-recipe-container">
+        <i class="fa fa-close"></i>
         <form class="new-recipes">
             <hr>
             <label for="name">Nombre</label>
-            <input type="text" name="name"  value={{Name}} />
+            <input type="text" name="name" value={{Name}} />
             <label for="description">Descripcion</label>
-            <input type="text" name="desc"  />
+            <input type="text" name="desc" />
             {{> NewIngredient}}
             <br>
             <input type="submit" value="ENVIAR ">
         </form>
     </div>
-
     {{/if}}
 
 
