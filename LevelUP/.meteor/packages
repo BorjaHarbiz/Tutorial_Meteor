@@ -19,7 +19,21 @@ ecmascript@0.14.3              # Enable ECMAScript2015+ syntax in app code
 typescript@3.7.6              # Enable TypeScript syntax in .ts and .tsx modules
 shell-server@0.5.0            # Server-side component of the `meteor shell` command
 
-reactive-dict
+kadira:flow-router
+kadira:blaze-layout
+erasaur:meteor-lodash
+stolinski:stylus-multi
+fortawesome:fontawesome
+spiderable
+fastclick
+raix:handlebar-helpers
+aldeed:collection2
+aldeed:autoform
 accounts-ui
 accounts-password
-meteortesting:mocha
+matb33:bootstrap-glyphicons
+zimme:active-route
+session
+datariot:ganalytics
+
+check

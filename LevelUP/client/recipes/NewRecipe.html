@@ -1,0 +1,33 @@
+<template name="NewRecipe">
+
+
+    {{#if edit}}
+    <div class="edit-recipe-container">
+        <form class="edit-recipe-form">
+            Nombre {{name}}
+            <input type="text" name="name" value={{Name}} />
+
+            <input type="text" name="desc" />
+            {{> NewIngredient edit=_id}}
+            <br>
+            <input type="submit" value="Editar">
+        </form>
+    </div>
+    {{else}}
+    <div class="new-recipe-container">
+        <i class="fa fa-close"></i>
+        <form class="new-recipes">
+            <hr>
+            <label for="name">Nombre</label>
+            <input type="text" name="name" value={{Name}} />
+            <label for="description">Descripcion</label>
+            <input type="text" name="desc" />
+            {{> NewIngredient}}
+            <br>
+            <input type="submit" value="ENVIAR ">
+        </form>
+    </div>
+    {{/if}}
+
+
+</template>
